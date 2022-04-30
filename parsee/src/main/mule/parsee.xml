@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3eadd8eb-25c0-4693-a99f-162d95f8c862" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="parseeFlow" doc:id="c9bd5d6e-152e-478b-9744-d5f05bf9f90e" >
+		<http:listener doc:name="Listener" doc:id="ae04e3ad-930a-4dcf-85a5-a36ac13bd3a2" config-ref="HTTP_Listener_config" path="parse"/>
+		<parse-template doc:name="Parse Template" doc:id="caf2a0d8-0413-4333-ad46-49c4e701afe0" location="C:\Users\dmoul\OneDrive\Desktop\parse\parse.txt"/>
+		<logger level="INFO" doc:name="Logger" doc:id="9ef2be83-45dc-4273-b1ee-45797325a9fb" message="#[payload]"/>
+	</flow>
+</mule>
